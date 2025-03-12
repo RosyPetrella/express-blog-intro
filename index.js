@@ -13,10 +13,47 @@ const port = 3001;
 
 app.use(express.static("public"));
 
+const posts = [
+  {
+    title: "Ciambellone",
+    content: "Ricetta Ciambellone",
+    img: "/img/ciambellone.jpeg",
+    tags: ["ciambella", "ricetta", "dolce"],
+  },
+  {
+    title: "Cracker alla barbabietola",
+    content: "Ricetta Cracker alla barbabietola",
+    img: "/img/cracker_barbabietola.jpeg",
+    tags: ["cracker", "snack", "salato"],
+  },
+  {
+    title: "Pane fritto dolce",
+    content: "Ricetta Pane fritto dolce",
+    img: "/img/pane_fritto_dolce.jpeg",
+    tags: ["pane", "fritto", "dolce"],
+  },
+  {
+    title: "Pasta alla barbabietola",
+    content: "Ricetta Pasta alla barbabietola",
+    img: "/img/pasta_barbabietola.jpeg",
+    tags: ["pasta", "verdura", "salato"],
+  },
+  {
+    title: "Torta Paesana",
+    content: "Ricetta Torta Paesana",
+    img: "/img/torta_paesana.jpeg",
+    tags: ["torta", "paesana", "dolce"],
+  },
+];
+
 app.listen(port, () => {
   console.log(`Server del mio blog`);
 });
 
 app.get("/", (req, res) => {
   res.send("Server del mio blog");
+});
+
+app.get("/bacheca", (req, res) => {
+  res.json(posts);
 });
